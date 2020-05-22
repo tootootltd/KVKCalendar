@@ -141,7 +141,7 @@ final class MonthCollectionViewCell: UICollectionViewCell {
     
     @objc private func tapOneEvent(gesture: UITapGestureRecognizer) {
         if let idx = events.firstIndex(where: { "\($0.id)".hashValue == gesture.view?.tag }) {
-            let location = gesture.location(in: superview)
+            let location = gesture.location(in: superview?.superview)
             let newFrame = CGRect(x: location.x, y: location.y, width: gesture.view?.frame.width ?? 0, height: gesture.view?.frame.size.height ?? 0)
             delegate?.didSelectEvent(events[idx], frame: newFrame)
         }
